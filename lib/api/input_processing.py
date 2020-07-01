@@ -1,7 +1,22 @@
 from lib.api.exceptions import *
 
 
-def sanitize(query, *args):
+def sanitize(query, parameters_groups, *args):
+    for group in parameters_groups:
+        verify_group_completeness(query, group)
+
+    return sanitize_parameters(query, *args)
+
+
+def verify_group_completeness(query, group):
+    present_elements = []
+    for element in group:
+        present_elements.append(query.get(element))
+    if len(present_elements) != present_elements.count(None) and present_elements.count(None):
+        raise MissingParameter(group)
+
+
+def sanitize_parameters(query, *args):
     values = {}
     for arg in args:
         sanitizer = getattr(sys.modules[__name__], arg)
