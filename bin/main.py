@@ -27,4 +27,4 @@ parameters_groups = [
 ]
 entry_point = Entrypoint(allowed_parameters, parameters_groups)
 
-run(host="0.0.0.0", port=8080, server='gunicorn', workers=1)
+run(host="0.0.0.0", port=80, server='gunicorn', workers=1)
