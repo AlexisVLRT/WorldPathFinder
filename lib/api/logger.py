@@ -15,5 +15,5 @@ def format_entry(request, status, processing_time):
 
 
 def log(entry):
-    with open(Path(__file__).parent.parent.parent / "log", "a+") as log_file:
+    with open(Path(__file__).parent.parent.parent / "logs" / "log", "a+") as log_file:
         log_file.write(entry)
