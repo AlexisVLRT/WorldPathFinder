@@ -1,38 +1,30 @@
 import json
+import time
 
-from bottle import route, run, request
+from bottle import route, run, request, HTTPResponse
 
-from lib.assets_management.assets_manager import Assets
-from lib.path import get_path
-from lib.api.input import *
-
-assets = Assets.instance()
+from lib.api.entrypoint import Entrypoint
+from lib.api.exceptions import ApiBaseException
+from lib.api.logger import log_request
 
 
-@route('/get_path')
-def path():
-
+@route('/blackfalcon/get_path')
+def main():
+    start = time.time()
     try:
-        values = sanitize(
-            request.query,
-            "start_map_id",
-            "end_map_id",
-            "start_cell",
-            "end_cell"
-        )
-    except get_possible_exceptions() as exc:
-        return json.dumps(exc.response)
+        status, result = entry_point.process_request(request)
+    except ApiBaseException as exc:
+        status, result = exc.status, exc.response
 
-    path = get_path(
-        map_info=assets.assets["map_info"],
-        graph=assets.assets["pathfinder_graph"],
-        start_map_id=values["start_map_id"],
-        end_map_id=values["end_map_id"],
-        start_cell=values["start_cell"],
-        end_cell=values["end_cell"]
-    )
-
-    return json.dumps(path)
+    response = HTTPResponse(status=status, body=json.dumps(result))
+    log_request(request, status, time.time() - start)
+    return response
 
 
-run(host='localhost', port=8080, debug=True)
+allowed_parameters = ["start_map_id", "end_map_id", "start_cell", "end_cell"]
+parameters_groups = [
+    ("start_map_id", "end_map_id")
+]
+entry_point = Entrypoint(allowed_parameters, parameters_groups)
+
+run(host="0.0.0.0", port=8080, server='gunicorn', workers=1)
