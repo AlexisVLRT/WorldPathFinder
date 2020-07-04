@@ -12,6 +12,7 @@ from lib.misc.singleton import Singleton
 @Singleton
 class Assets:
     def __init__(self):
+        self.assets_filter = ["map_info", "pathfinder_graph"]
         self.assets_paths = Path(__file__).parent.parent.parent / "assets"
         self.mongo = Mongo.instance()
         self.mongo.assets = self
@@ -84,7 +85,7 @@ class Assets:
     def update_assets(self):
         self.remove_deprecated_assets()
 
-        mongo_checksums = self.mongo.get_checksums()
+        mongo_checksums = self.mongo.get_checksums(files_filter=self.assets_filter)
         local_checksums = self.create_assets_checksums()
 
         files_to_update = get_files_to_update(mongo_checksums, local_checksums)
