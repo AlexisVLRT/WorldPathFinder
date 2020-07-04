@@ -60,15 +60,17 @@ If you want to get serious about using the API and need to get rid of the thrott
 
 ### Known limitations
 
-- Special map changes: does not considers as neighbours the maps that require using an activable to change maps. This may cause the pathfinder to go the long way around or to fail to find a path.
-- worldmap changes: the pathfinder will be unable to find a path between maps on different worldmaps. It will also not include worldmap changes to create a path (it will not use tunnels)
-- Continents outside amakna: they should work, but my bots are only running in Amakna, so you might encounter issues.
+- **Special map changes**: does not considers as neighbours the maps that require using an activable to change maps. This may cause the pathfinder to go the long way around or to fail to find a path.
+- **Worldmap changes**: the pathfinder will be unable to find a path between maps on different worldmaps. It will also not include worldmap changes to create a path (it will not use tunnels)
+- **Continents outside amakna**: they should work, but my bots are only running in Amakna, so you might encounter issues.
 
 ### Reporting issues and requesting features
 
 Please do so using GitHub issues. If you're reporting a problem, make sure to include the request you made, and any additional info that might help troubleshooting.
 
 Requested features will be added (or not) at my discretion as time allows.
+
+Contributions are welcome, don't hesitate to make a PR to fix a bug or add a feature.
 
 ## Deploying your own
 
