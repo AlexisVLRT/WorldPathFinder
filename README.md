@@ -21,7 +21,7 @@ end_cell_id
 
 To go from [6, -19] to [3, -18]
 
-[Request](alexisvialaret.fr/blackfalcon/get_path?start_map_id=191106048;end_map_id=191102978):
+[Request](http://alexisvialaret.fr/blackfalcon/get_path?start_map_id=191106048;end_map_id=191102978):
 `blackfalcon/get_path?start_map_id=191106048;end_map_id=191102978`
 
 Result:
@@ -37,7 +37,7 @@ Result:
 
 To go from [3, -19] cell 456 to [3, -20] cell 412
 
-[Request](blackfalcon/get_path?start_map_id=191102976;start_cell_id=456;end_map_id=188744706;end_cell_id=412):
+[Request](http://alexisvialaret.fr/blackfalcon/get_path?start_map_id=191102976;start_cell_id=456;end_map_id=188744706;end_cell_id=412):
 `blackfalcon/get_path?start_map_id=191102976;start_cell_id=456;end_map_id=188744706;end_cell_id=412`
 
 Result:
