@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>World Path Finder help</title>
+</head>
+<body>
+    <h3 id="example-requests">Example requests</h3>
+    <p>To go from [6, -19] to [3, -18]</p>
+    <p><a href="/blackfalcon/get_path?start_map_id=191106048;end_map_id=191102978">Request</a>:
+    <code>blackfalcon/get_path?start_map_id=191106048;end_map_id=191102978</code></p>
+    <p>Result:</p>
+    <pre><code class="lang-JSON">[
+        {<span class="hljs-attr">"coord"</span>: <span class="hljs-string">"6;-19"</span>, <span class="hljs-attr">"map_id"</span>: <span class="hljs-number">191106048</span>, <span class="hljs-attr">"cell"</span>: <span class="hljs-number">322</span>, <span class="hljs-attr">"direction"</span>: <span class="hljs-string">"w"</span>},
+        {<span class="hljs-attr">"coord"</span>: <span class="hljs-string">"5;-19"</span>, <span class="hljs-attr">"map_id"</span>: <span class="hljs-number">191105024</span>, <span class="hljs-attr">"cell"</span>: <span class="hljs-number">539</span>, <span class="hljs-attr">"direction"</span>: <span class="hljs-string">"s"</span>},
+        {<span class="hljs-attr">"coord"</span>: <span class="hljs-string">"5;-18"</span>, <span class="hljs-attr">"map_id"</span>: <span class="hljs-number">191105026</span>, <span class="hljs-attr">"cell"</span>: <span class="hljs-number">140</span>, <span class="hljs-attr">"direction"</span>: <span class="hljs-string">"w"</span>},
+        {<span class="hljs-attr">"coord"</span>: <span class="hljs-string">"4;-18"</span>, <span class="hljs-attr">"map_id"</span>: <span class="hljs-number">191104002</span>, <span class="hljs-attr">"cell"</span>: <span class="hljs-number">266</span>, <span class="hljs-attr">"direction"</span>: <span class="hljs-string">"w"</span>}
+    ]
+    </code></pre>
+    <p>To go from [3, -19] cell 456 to [3, -20] cell 412</p>
+    <p><a href="/blackfalcon/get_path?start_map_id=191102976;start_cell_id=456;end_map_id=188744706;end_cell_id=412">Request</a>:
+    <code>blackfalcon/get_path?start_map_id=191102976;start_cell_id=456;end_map_id=188744706;end_cell_id=412</code></p>
+    <p>Result:</p>
+    <pre><code class="lang-JSON">[
+        {<span class="hljs-attr">"coord"</span>: <span class="hljs-string">"3;-19"</span>, <span class="hljs-attr">"map_id"</span>: <span class="hljs-number">191102976</span>, <span class="hljs-attr">"cell"</span>: <span class="hljs-number">461</span>, <span class="hljs-attr">"direction"</span>: <span class="hljs-string">"e"</span>},
+        {<span class="hljs-attr">"coord"</span>: <span class="hljs-string">"4;-19"</span>, <span class="hljs-attr">"map_id"</span>: <span class="hljs-number">191104000</span>, <span class="hljs-attr">"cell"</span>: <span class="hljs-number">11</span>, <span class="hljs-attr">"direction"</span>: <span class="hljs-string">"n"</span>},
+        {<span class="hljs-attr">"coord"</span>: <span class="hljs-string">"4;-20"</span>, <span class="hljs-attr">"map_id"</span>: <span class="hljs-number">188745218</span>, <span class="hljs-attr">"cell"</span>: <span class="hljs-number">210</span>, <span class="hljs-attr">"direction"</span>: <span class="hljs-string">"w"</span>}
+    ]
+    </code></pre>
+
+</body>
+</html>
