@@ -7,12 +7,13 @@ from multiprocessing import Pool, cpu_count
 
 from lib.assets_management.mongo import Mongo
 from lib.misc.singleton import Singleton
+import config
 
 
 @Singleton
 class Assets:
     def __init__(self):
-        self.assets_filter = ["map_info", "pathfinder_graph"]
+        self.assets_filter = config.REQUIRED_ASSETS
         self.assets_paths = Path(__file__).parent.parent.parent / "assets"
         self.mongo = Mongo.instance()
         self.mongo.assets = self

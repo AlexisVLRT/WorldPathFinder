@@ -6,6 +6,7 @@ from bottle import route, run, request, HTTPResponse
 from lib.api.entrypoint import Entrypoint
 from lib.api.exceptions import ApiBaseException
 from lib.api.logger import log_request
+import config
 
 
 @route('/blackfalcon/get_path')
@@ -21,10 +22,6 @@ def main():
     return response
 
 
-allowed_parameters = ["start_map_id", "end_map_id", "start_cell", "end_cell"]
-parameters_groups = [
-    ("start_map_id", "end_map_id")
-]
-entry_point = Entrypoint(allowed_parameters, parameters_groups)
+entry_point = Entrypoint(config.ALLOWED_PARAMETERS, config.PARAMETERS_GROUPS)
 
 run(host="0.0.0.0", port=80, server='gunicorn', workers=1)

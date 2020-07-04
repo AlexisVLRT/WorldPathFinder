@@ -1,12 +1,13 @@
 import time
 
 from lib.api.exceptions import TooManyRequests
+import config
 
 
 class Throttler:
     def __init__(self):
         self.request_log = {}
-        self.secs_between_requests = 5
+        self.secs_between_requests = config.MIN_TIME_BETWEEN_REQUESTS
 
     def throttle(self, request):
         client_ip = request.environ.get("REMOTE_ADDR")
